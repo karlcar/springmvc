@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>zspringMVC</display-name>
+  <!-- 前端控制器DispatcherServlet -->
+  <servlet>
+  	<servlet-name>springmvc</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<!-- 加载springmvc的配置 -->
+  <init-param>
+  	<param-name>ContextConfigLocation</param-name>
+  	<!-- 配置文件的地址
+  		如果不配置ContextConfigLocation，默认查找的配置文件的名称是classpath下的：servlet的名称+“-servlet.xml”，及springmvc-servlet.xml
+  	 -->
+  	<param-value>classpath:springmvc.xml</param-value>
+  </init-param>
+  </servlet>
+  
+  
+  <servlet-mapping>
+  	<servlet-name>springmvc</servlet-name>
+  	<!-- 可以配置/，此工程所有请求全部有springmvc解析，此种方法可以实现RESTful方式，需要特殊处理静态文件不能由springmvc解析
+  		可以配置*.do或*.action，所有请求url扩展名为.do或.action有springmvc解析，此种方法常用
+  		不可以配置/*，如果配置了，返回jsp也有springmvc解析，这是不对的。
+  	 -->
+  	<url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
